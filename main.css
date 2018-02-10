@@ -1,0 +1,144 @@
+*{
+    font-family: 'Roboto', sans-serif;
+    color: rgb(50, 50, 50);
+}
+
+body{
+    background: rgb(169, 169, 169);
+    margin: 0;
+    overflow-x: hidden;
+    min-width: 800px;
+}
+
+.cv-plane{
+    padding-bottom: 75px;
+    margin: 50px;
+    background: rgb(240, 240, 240);
+
+    min-height: 500px;
+}
+
+.profile-wrapper{
+    display: table;
+    
+    width: 100%;
+    padding: 75px 0 0 75px;
+    box-sizing: border-box;
+    max-height: 350px;
+}
+
+.profile-inside-wrapper{
+    display: table-row;
+}
+
+.profile-pic-wrapper{
+    display: table-cell;
+    width: 200px;
+    height: 200px;
+}
+
+.profile-wrapper img{
+    max-height: 200px;
+    display: table-cell;
+    border: 1px solid rgb(30, 0, 255);
+}
+
+.pers-props-wrapper{
+    display: table-cell;
+    position: relative;
+}
+
+.pers-props{
+    padding: 20px;
+
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    display: inline-table;
+}
+
+.props{
+    list-style: none;
+    padding: 0;
+    margin: 5px;
+}
+
+.props li span{
+    color: rgb(30, 0, 255);
+}
+.props li span::after{
+    content: " ";
+}
+
+.prof-name{
+    display: inline;
+    font-weight: 500;
+    font-size: 35px;
+}
+
+.lined-title{
+    margin-top: 75px;
+    margin-left: -45px;
+    margin-bottom: 20px;
+    width: 100vw;
+    display: table;
+    white-space: nowrap;
+    color: rgb(30, 0, 255);
+}
+.lined-title::before{
+    right: 5px;
+    min-width: 120px;
+}
+.lined-title::after{
+    left: 5px;
+    width: 100%;
+}
+.lined-title::before, .lined-title::after {
+    border-top: 1px solid rgb(30, 0, 255);
+    content: '';
+    display: table-cell;
+    position: relative;
+    top: 1em;
+}
+
+.section-content{
+    padding: 0 75px 0 75px;
+}
+
+.studies-table td:first-child{
+    min-width: 90px;
+    color: rgb(30, 0, 255);
+    vertical-align: text-top;
+}
+
+.custom-list{
+    padding: 0;
+    margin-top: 5px;
+    margin-left: 15px;
+    list-style: none;
+}
+.custom-list>li{
+    margin-bottom: 2px;
+}
+.custom-list>li::before{
+    content: "- ";
+}
+
+.IT-table td{
+    vertical-align: text-top;
+    min-width: 250px;
+}
+
+.signature-wrapper{
+    float: right;
+}
+.signature-wrapper img{
+    height: 50px;
+    margin-bottom: 25px;
+    margin-right: 25px;
+}
+
+.page-break{
+    page-break-before: always;
+}
