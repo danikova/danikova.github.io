@@ -9,16 +9,10 @@ h1{
 }
 
 .to-top-btn{
-    opacity: 0.5;
-    transition: 0.3s;
-
     position: fixed;
     bottom: 15px;
     right: 25px;
     z-index: 99;
-}
-.to-top-btn:hover{
-    opacity: 1;
 }
 
 .button, ul.nav-ul li{
