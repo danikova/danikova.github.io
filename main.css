@@ -168,8 +168,7 @@ ul.nav-ul li{
 }
 
 .simple-button{
+    padding: 6px;
     text-decoration: none;
-    border: 1px solid rgb(240, 240, 240);
-    border-radius: 5px;
     margin-bottom: 2px;
 }
