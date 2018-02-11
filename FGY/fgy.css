@@ -1,0 +1,69 @@
+#main{
+    padding: 75px;
+    padding-bottom: 0;
+}
+
+h1{
+    padding: 0;
+    margin: 0;
+}
+
+.to-top-btn{
+    opacity: 0.5;
+    transition: 0.3s;
+
+    position: fixed;
+    bottom: 15px;
+    right: 25px;
+    z-index: 99;
+}
+.to-top-btn:hover{
+    opacity: 1;
+}
+
+.button, ul.nav-ul li{
+    padding: 5px;
+    background: rgb(220, 220, 220);
+    border: 1px solid rgb(220, 220, 220);
+    border-radius: 5px;
+    margin-bottom: 2px;
+    cursor: pointer;
+}
+
+ul{
+    padding-left: 0;
+    list-style: none;
+}
+ul.nav-ul li{
+    display: inline-block;
+}
+.button a, ul.nav-ul li a{
+    text-decoration: none;
+}
+
+ul{
+    margin-bottom: 10px;
+}
+
+ul li{
+    margin-top: 2px;
+}
+
+ul ol li{
+    padding: 1px;
+}
+
+ul ol li:hover{
+    background: rgb(220, 220, 220);
+    border: 1px solid rgb(220, 220, 220);
+    border-radius: 5px;
+    padding: 0;
+    cursor: default;
+}
+
+ul ol ol{
+    list-style-type: lower-alpha;
+    margin-left: 17px;
+    margin-bottom: 2px;
+    padding: 0;
+}
