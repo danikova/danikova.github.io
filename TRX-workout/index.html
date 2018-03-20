@@ -1,0 +1,175 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>TRX-workout</title>
+
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="./css/material-switch.css">
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="trx-logo">TRX</div>
+        <div class="page-container">
+
+
+
+
+            <div class="TRX-pager" id="page3">
+                <button type="button" class="btn btn-warning" onclick="app.gotoPage(0)" style="margin-bottom: 20px;"> &lt; Home </button>
+
+            </div>
+
+
+
+
+            <div class="TRX-pager" id="page2">
+                <button type="button" class="btn btn-warning" onclick="app.gotoPage(0)" style="margin-bottom: 20px;"> &lt; Home </button>
+                <h1 style="display: inline-block">Create Random Workout</h1>
+                <div class="container" style="max-height: 200px;">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm">
+                                <ul class="list-group d-flex p-2">
+                                    <li class="list-group-item">
+                                        <span class="material-switch pull-right">
+                                            <input id="type0" name="type0" type="checkbox" tr-col="0" checked/>
+                                            <label for="type0" class="label-warning"></label>
+                                        </span>
+                                        <span>Arms</span>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <span class="material-switch pull-right">
+                                            <input id="type1" name="type1" type="checkbox" r-col="1" checked/>
+                                            <label for="type1" class="label-warning"></label>
+                                        </span>
+                                        <span>Back</span>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <span class="material-switch pull-right">
+                                            <input id="type2" name="type2" type="checkbox" r-col="2" />
+                                            <label for="type2" class="label-warning"></label>
+                                        </span>
+                                        <span>Chest</span>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <span class="material-switch pull-right">
+                                            <input id="type3" name="type3" type="checkbox" r-col="3,4" />
+                                            <label for="type3" class="label-warning"></label>
+                                        </span>
+                                        <span>Legs</span>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <span class="material-switch pull-right">
+                                            <input id="type4" name="type4" type="checkbox" r-col="5" />
+                                            <label for="type4" class="label-warning"></label>
+                                        </span>
+                                        <span>Shoulders</span>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <span class="material-switch pull-right">
+                                            <input id="type5" name="type5" type="checkbox" r-col="6,7" />
+                                            <label for="type5" class="label-warning"></label>
+                                        </span>
+                                        <span>Core</span>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <span class="material-switch pull-right">
+                                            <input id="type6" name="type6" type="checkbox" r-col="8,9" />
+                                            <label for="type6" class="label-warning"></label>
+                                        </span>
+                                        <span>Full Body</span>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <span class="material-switch pull-right">
+                                            <input id="type7" name="type7" type="checkbox" r-col="10" />
+                                            <label for="type7" class="label-warning"></label>
+                                        </span>
+                                        <span>Cardio</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-sm">
+                                <ul class="list-group d-flex p-2">
+                                    <li class="list-group-item">Levels</li>
+                                    <li class="list-group-item">
+                                        <span class="material-switch pull-right">
+                                            <input id="lvl0" name="lvl0" type="checkbox" tr-row="0,1,2,3" checked/>
+                                            <label for="lvl0" class="label-warning"></label>
+                                        </span>
+                                        <span>Low</span>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <span class="material-switch pull-right">
+                                            <input id="lvl1" name="lvl1" type="checkbox" tr-row="4,5,6,7,8" checked/>
+                                            <label for="lvl1" class="label-warning"></label>
+                                        </span>
+                                        <span>Medium</span>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <span class="material-switch pull-right">
+                                            <input id="lvl2" name="lvl2" type="checkbox" tr-row="9,10,11,12,13,14" />
+                                            <label for="lvl2" class="label-warning"></label>
+                                        </span>
+                                        <span>High</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-sm">
+                                <ul class="list-group d-flex p-2">
+                                    <li class="list-group-item">Intensity</li>
+                                    <li class="list-group-item">
+                                        <span>Low</span>
+                                        <span class="material-switch pull-right">
+                                            <input id="intensity" name="intensity" type="checkbox" checked/>
+                                            <label for="intensity" class="label-warning"></label>
+                                        </span>
+                                        <span>High</span>
+                                    </li>
+                                </ul>
+
+                                <button type="button" class="btn btn-warning d-flex p-2" onclick="app.gotoPage(0)" style="width: 100%; height: 59px;">
+                                    Generate Workout
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            <div class="TRX-pager" id="page1">
+                <button type="button" class="btn btn-warning" onclick="app.gotoPage(0)" style="margin-bottom: 20px;"> &lt; Home </button>
+                <h1 style="display: inline-block">Select Workout</h1>
+
+            </div>
+
+
+
+
+            <div class="TRX-pager" id="page0">
+                <h1>Online TRX Interval Timer</h1>
+                <div class="container">
+                    <button type="button" class="btn btn-warning" onclick="app.gotoPage(1)">Select Workout</button>
+                    <hr>
+                    <button type="button" class="btn btn-warning" onclick="app.gotoPage(2)">Create Random Workout</button>
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+    <div class="border-wrapper"></div>
+</body>
+
+<script src="./js/jquery-3.3.1.min.js"></script>
+<script src="./js/app/main.js"></script>
+
+</html>
