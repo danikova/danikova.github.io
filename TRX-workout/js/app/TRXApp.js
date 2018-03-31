@@ -32,7 +32,7 @@ class TRXApp{
     }
 
     _initializeExercises(){
-        $.getJSON( "/js/exercises/exercises.json", data=>{
+        $.getJSON( "./js/exercises/exercises.json", data=>{
             this.exercises = data;
           });
     }
