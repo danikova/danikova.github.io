@@ -20,8 +20,6 @@
     <link rel="stylesheet" href="./css/bootstrap.min.css">
     <link rel="stylesheet" href="./css/main.css">
     <link rel="stylesheet" href="./css/material-switch.css">
-
-    <script src="./js/app/NoSleep.js"></script>
 </head>
 
 <body>
@@ -71,6 +69,7 @@
                         </td>
                     </tr>
                 </table>
+
                 <table class="Remaining-timer">
                     <tr>
                         <td>
@@ -83,6 +82,18 @@
                         </td>
                     </tr>
                 </table>
+
+                <div class="prev-exercise">
+                    <div style="flex: 1 1 auto;"></div>
+                    <button class="btn btn-warning"><</button>
+                    <div style="flex: 1 1 auto;"></div>
+                </div>
+
+                <div class="next-exercise">
+                    <div style="flex: 1 1 auto;"></div>
+                    <button class="btn btn-warning">></button>
+                    <div style="flex: 1 1 auto;"></div>
+                </div>
 
             </div>
 
@@ -231,16 +242,21 @@
     <div class="border-wrapper"></div>
 </body>
 
+<script>
+    Array.prototype.random = function () {
+        return this[Math.floor((Math.random()*this.length))];
+    }
+    Array.prototype.subarray=function(start,end){
+        if(!end){ end=-1;} 
+        return this.slice(start, this.length+1-(end*-1));
+    }
+</script>
+
 <script src="./js/jquery-3.3.1.min.js"></script>
 <script src="./js/app/Timer.js"></script>
+<script src="./js/app/SetManager.js"></script>
 <script src="./js/app/Workout.js"></script>
 <script src="./js/app/TRXApp.js"></script>
 <script src="./js/app/sounds/Dinger.js"></script>
-
-<script>
-    var noSleep = new NoSleep();
-    $(window).bind('touchstart click', ()=>{noSleep.enable();});
-    $(window).trigger('click');
-</script>
 
 </html>

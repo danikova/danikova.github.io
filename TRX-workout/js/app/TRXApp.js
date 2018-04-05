@@ -10,11 +10,11 @@ class TRXApp{
         ];
 
         this.timer = new TRXTimer();
-        this.exercises = undefined;
+        TRXApp.exercises = undefined;
         this._initializeExercises();
 
         // for random workouts
-        this.minWorkoutTime = 20 * 60;
+        this.minWorkoutTime = 30 * 60;
         this.actWorkout = undefined;
     }
 
@@ -33,12 +33,12 @@ class TRXApp{
 
     _initializeExercises(){
         $.getJSON( "./js/exercises/exercises.json", data=>{
-            this.exercises = data;
+            TRXApp.exercises = data;
           });
     }
 
     generateRandomWorkout(){
-        if(this.exercises == undefined){
+        if(TRXApp.exercises == undefined){
             alert('error');
             return;
         }
@@ -53,27 +53,22 @@ class TRXApp{
         });
 
         var i = 0;
-        while(this.minWorkoutTime > this.actWorkout.getSumExercisesTime() && i < 1000){
+        var prevExe = undefined;
+        while(!this.actWorkout.isDone() && i < 1000){
             var rndCol = cols.random();
             var rndRow = rows.random();
-            var rndExe = this.exercises.exercisesArr[rndRow][rndCol];
-            if(this._expressions(rndExe)){
+            var rndExe = TRXApp.exercises.exercisesArr[rndRow][rndCol];
+            if(rndExe != null && prevExe != rndExe){
                 this.actWorkout.addExercise(rndExe);
-                // if(this.exercises.repeatedExercises.find(x=>x==rndExe))
-                //     this.actWorkout.addExercise(rndExe);
+                prevExe = rndExe;
             }
             i++;
         }
 
+        console.log(this.actWorkout.setManager);
+
         this.timer.setWorkout(this.actWorkout);
         this.gotoPage(3);
-    }
-
-    _expressions(rndExe){
-        var result = true;
-        result &= rndExe != null;
-        result &= !this.actWorkout.isItLastExercise(rndExe);
-        return result;
     }
 
     _getArrayOfAttr(cssSelector, attr){
@@ -91,7 +86,3 @@ class TRXApp{
 }
 
 var app = new TRXApp();
-
-// var noSleep = new NoSleep();
-// noSleep.enable();
-// noSleep.disable();

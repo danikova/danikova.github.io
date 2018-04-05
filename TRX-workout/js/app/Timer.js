@@ -12,6 +12,7 @@ class TRXTimer{
         this.remainingNode = $('#page3 #remaining-time');
         
         this._bindPauseButton();
+        this._bindPrevNextButtons();
     }
 
     setWorkout(workout){
@@ -21,7 +22,7 @@ class TRXTimer{
         this.workoutNameNode.text(this.workout.name);
 
         this.nextNode.show();
-        this._setPicture(this.actualExercise);
+        this._setPicture(0);
         this.backgroundNode.css('background','');
 
         this._resetTimerLoop();
@@ -34,7 +35,6 @@ class TRXTimer{
         this.set = 0;
         this.repeat = 0;
 
-        this.actualExercise = 0;
         this.exerciseTime = -1;
         this.workout = undefined;
         this.exerciseNumber = -1;
@@ -90,37 +90,25 @@ class TRXTimer{
             this._pauseExerciseHandler();
     }
 
-    _startExerciseHandler(){
-        singleDing();
+    _startExerciseHandler(sound=true){
+        if(sound)
+            singleDing();
         this.nextNode.hide();
-        this.actualExercise = this._getActualExercise(this.exerciseNumber);
-        this._setPicture(this.actualExercise);
+        this._setPicture(this.exerciseNumber);
         this.backgroundNode.css('background','lime');
     }
 
-    _pauseExerciseHandler(){
-        doubleDing();
+    _pauseExerciseHandler(sound=true){
+        if(sound)
+            doubleDing();
         this.nextNode.show();
-        this._setPicture(this._getActualExercise(this.exerciseNumber+1));
+        this._setPicture(this.exerciseNumber+1);
         this.backgroundNode.css('background','');
-    }
-
-    _getActualExercise(number){
-        if(number % this.workout.intensity.repeat == 0)
-            this.repeat++;
-        if(this.repeat == this.workout.intensity.repeat){
-            this.repeat = 0;
-            this.set++;
-        }
-        if(this.set == this.workout.intensity.sets){
-            this._resetTimerLoop();
-            this._finishHandler();
-        }
-
-        return number%this.workout.intensity.repeat + this.set*this.workout.intensity.sets;
     }
     
     _finishHandler(){
+        this._resetTimerLoop();
+        doubleDing();
         alert('Congrat noob');
     }
 
@@ -130,11 +118,16 @@ class TRXTimer{
 
     _updateCornerTimers(){
         this.elapsedNode.text(this._getPPtime(this.time));
-        this.remainingNode.text(this._getPPtime(this.workout.getSumExercisesTime() - this.time));
+        var remainingTime = this.workout.getSumExercisesTime() - this.time;
+        if(remainingTime <= 0){
+            this._finishHandler()
+        }else{
+            this.remainingNode.text(this._getPPtime(remainingTime));
+        }
     }
 
     _setPicture(index){
-        this.picNode.attr('src','./js/exercises/pics/' + this.workout.exercises[index]);
+        this.picNode.attr('src','./js/exercises/pics/' + this.workout.setManager.getExerciseByNumber(index));
     }
 
     _getPPtime(seconds){
@@ -147,14 +140,39 @@ class TRXTimer{
             if(this.intervalId == undefined){
                 this.statusNode.text('Click to pause');
                 this._startTimer();
-                noSleep.enable();
+                clickableTimerNode.addClass('timer-pulse');
+                setTimeout(()=>{
+                    clickableTimerNode.removeClass('timer-pulse');
+                }, 1000);
             }
             else{
                 this.statusNode.text('Timer paused');
                 this._pauseTimer();
-                noSleep.disable();
-                e.preventDefault();
-                e.stopPropagation();
+                clickableTimerNode.addClass('timer-pulse');
+                setTimeout(()=>{
+                    clickableTimerNode.removeClass('timer-pulse');
+                }, 1000);
+            }
+        });
+    }
+
+    _bindPrevNextButtons(){
+        var prevButton = $('#page3 div.prev-exercise > button');
+        var nextButton = $('#page3 div.next-exercise > button');
+
+        prevButton.click(()=>{
+            if(this.time <= this.workout.warmupTime){
+                this.time = 0;
+                this._pauseExerciseHandler(false);
+            }else{
+                this.time = this.workout.warmupTime + ((this.exerciseNumber - 1 >= 0)?this.exerciseNumber - 1:0)*(this.workout.intensity.workTime+this.workout.intensity.pauseTime);
+            }
+        });
+        nextButton.click(()=>{
+            if(this.time < this.workout.warmupTime){
+                this.time = this.workout.warmupTime;
+            }else{
+                this.time = this.workout.warmupTime + (this.exerciseNumber + 1)*(this.workout.intensity.workTime+this.workout.intensity.pauseTime);
             }
         });
     }
