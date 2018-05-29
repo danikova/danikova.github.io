@@ -1,0 +1,17 @@
+{
+    "Exercises":[
+        ["Arms", 0],
+        ["Back", 1],
+        ["Chest", 2],
+        ["Legs", 3, 4],
+        ["Shoulders", 5],
+        ["Core", 6, 7],
+        ["Full Body", 8, 9],
+        ["Cardio", 10]
+    ],
+    "Levels":[
+        ["Easy", 0, 1, 2, 3],
+        ["Medium", 4, 5, 6, 7, 8],
+        ["Hard", 9, 10, 11, 12, 13, 14]
+    ]
+}
