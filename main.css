@@ -15,7 +15,7 @@ body{
     min-width: 800px;
 }
 
-.cv-plane{
+.custom-container{
     padding-bottom: 75px;
     margin: 50px;
     background: rgb(240, 240, 240);
