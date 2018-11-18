@@ -19,8 +19,8 @@ body{
     padding-bottom: 75px;
     margin: 50px;
     background: rgb(240, 240, 240);
-
-    min-height: 500px;
+    min-height: calc(100vh - 100px);
+    box-sizing: border-box;
 }
 
 .profile-wrapper{
