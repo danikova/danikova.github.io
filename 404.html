@@ -41,9 +41,9 @@
         </style>
     </head>
     <script>
-        var pathArray = window.location.pathname.split('/');
-        if(pathArray.length > 2){
-           window.location.replace('/' + pathArray[1] + '/');
+        var pathArray = window.location.pathname.split('/').filter(word => word != '')
+        if(pathArray.length > 1){
+           window.location.replace('/' + pathArray[0] + '/');
         }
     </script>
     <body>
