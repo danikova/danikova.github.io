@@ -41,6 +41,12 @@
         }
         </style>
     </head>
+    <script>
+        var pathArray = window.location.pathname.split('/');
+        if(pathArray.length >= 2){
+           window.location.replace('/' + pathArray[1] + '/');
+        }
+    </script>
     <body>
         <div class="custom-container">
             <img class="center-object full-size travolta" src="travolta.gif" alt="travolta">
